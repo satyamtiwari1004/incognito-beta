@@ -1,0 +1,110 @@
+
+{% extends 'base.html' %}
+{% block title %}Incognito
+{% endblock  %}
+{% block body %}
+{% load static %}
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-6">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h1>Become a Cyber
+                                Security Professional</h1>
+                            <p>No experience? No problem.Work with industry-leading mentors as they help you get started 
+                            and guide you through the Program.</p>
+                            <a href="/courses" class="btn_1">View Course </a>
+                            <a href="#" class="btn_2">50% Discount </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="learning_part" style='padding-top:0px'>
+        <div class="container">
+            <div class="row align-items-sm-center align-items-lg-stretch">
+                <div class="col-md-7 col-lg-7">
+                    <div class="learning_img">
+                        <img src="{% static 'img/learning_img.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5 col-lg-5">
+                    <div class="learning_member_text">
+                        <h5>About us</h5>
+                        <h2>Create Free Portfolio and Get Hired</h2>
+                        <p>Create free portfolio in just less than 5 minutes and Learn from free Ethical hacking courses to get Hired By top recruiters..</p>
+                        <ul>
+                            <li><span class="ti-pencil-alt"></span>Learn from our free Ethical Hacking courses</li>
+                            <li><span class="ti-ruler-pencil"></span>Create a free Portfolio.</li>
+                        </ul>
+                        <a href="/accounts/signup" class="btn_1">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style='padding-top:0px'class="advance_feature learning_part">
+        <div class="container">
+            <div class="row align-items-sm-center align-items-xl-stretch">
+                <div class="col-md-6 col-lg-6">
+                    <div class="learning_member_text">
+                        <h5>About Us</h5>
+                        <h2>Best Handpicked Courses From Top Websites</h2>
+                        <p>Best Courses related to ethical hacking and cyber security from all over the web, Handpicked by our team.</p>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-pencil-alt"></span>
+                                    <h4>Learn Anywhere</h4>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                <div class="learning_member_text_iner">
+                                    <span class="ti-stamp"></span>
+                                    <h4>Excellent Discounts</h4>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="learning_img">
+                        <img src="{% static 'img/advance_feature_img.png' %} " alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class=" padding_top" style='padding-top:0px'>
+        <div class="container">
+        
+         <div class="section_tittle text-center">
+                        <h2>Recent Posts</h2>
+        </div>
+        <div class='row'>
+                       {% for crs in threepost %}
+                       <div class='col-md-6 col-lg-3 mb-3 mb-lg-3'>
+                            <div style='box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15) ;height:288px;' class="uk-card  uk-card-default" style="">
+                                <div class="uk-card-media-top">
+                                    <img src="{{crs.thumb.url}}"alt="">
+                                </div>
+                                <div class="uk-card-body" style='border-radius:0px 0px 5px 5px; '>
+                                 <a href='#' class='tag' style='color:white;font-family:arial;'>{{crs.tag}}<a>
+                                    <a style='  padding-top:10px' href='/blog/{{crs.slug}}'><h5 style='padding-top:10px;' class="uk-card-title">{{crs.title |safe|truncatechars:50}} </h5></a>
+                                    
+                                   <a style='right:38px; position:absolute;'>{{crs.author}} </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                    
+                </div>
+      </div></section>
+{% endblock  %}
+    

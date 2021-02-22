@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Invalid Link | Incognito
+{% endblock  %}
+{% block body %}
+
+<div class="container" style="margin-top:150px">
+<div class="alert alert-danger" role="alert">
+  <h3 class="alert-heading">Activation link is invalid!</h3>
+<p>Some error occurred.<br/>May be activation link expired or link already used. You can log in now on the <a href="/accounts/signin/">log in page</a>.</p>
+</div>
+
+</div>
+{% endblock  %}

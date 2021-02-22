@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SignIn -Incognito
+{% endblock  %}
+{% block csslink %}<link rel="stylesheet" href=" {% static 'style.css' %} ">
+{% endblock  %}
+    {% block body %}
+    <div class='container-full_image' >
+    <div id="wrapper">
+      <div id="left">
+        <div id="signin">
+         
+          <form id='loginform'>
+          {% csrf_token %}
+            <div>
+              <label>Username</label>
+              <input type="username" class="text-input" id='loginusername' name='loginusername' placeholder='abc123' required>
+            </div>
+            <div>
+              <label>Password</label>
+              <input type="password" class="text-input" id='loginpassword' name='loginpassword' placeholder='Password' required> 
+              {% if request.GET.next %}
+               <input type="hidden" id="next1" name="next" value="{{request.GET.next}}"/>
+              {% endif %}
+            </div>
+           
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" required>
+              <label class="custom-control-label" for="customCheck1">Remember Me</label>
+            </div>
+            
+            <button type="submit" class="btn_1">Sign In</button>
+          </form>
+          <div class="links">
+            <a href="/accounts/password-reset/" >Forgot Password</a>
+          </div>
+          <div class="or">
+            <hr class="bar">
+            <span>OR</span>
+            <hr class="bar">
+          </div>
+          <a href="/accounts/signup/" class="secondary-btn">Create an account</a>
+        </div>
+      </div>
+      <div id="right">
+        <div id="showcase">
+          <div class="showcase-content">
+            <h1 class="showcase-text">
+              Let's create the future <strong>together</strong>
+            </h1>
+            <br>
+            <a href="/courses" class="secondary-btn">Learn Ethical Hacking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    
+ {% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

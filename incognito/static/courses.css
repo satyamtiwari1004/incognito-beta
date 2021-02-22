@@ -1,0 +1,111 @@
+.section_tittle{
+    font-family:metropolis-medium;
+    
+}
+.section_tittle h2::after{
+    margin-bottom: 0px;
+}
+.uk-slider .uk-position-relative .uk-slider-container {
+    height: 350px;
+	
+}
+.uk-card.uk-card-default {
+    font-family: metropolis-medium;
+	height: 330px;
+    width: 260px;
+   
+    border-radius: 15px;
+}
+.uk-card-media-top{
+    border-radius:15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    
+}
+.uk-card-body{
+    
+    padding-top:15px;
+    padding-left:10px;
+    margin-right: 0px;
+}
+.uk-card-body h3{
+    font-family: metropolis-medium;
+    font-size:17px;
+    padding-top:5px;
+    padding-left:5px;
+}
+.uk-card-media-top img{
+    padding-top:-20px;
+    border-radius:15px 15px 0px 0px;
+    width:100%; 
+    height:160px; 
+    
+}
+.tag{
+    display:inline-block;
+    background-color: rgba(255, 68, 0, 0.87);
+    color:black;
+    border: 1px;
+    border-radius:15px;
+    font-size:12px;
+    padding-top:2px;
+    text-align: center;
+    font-weight: 600;
+    height:23px;
+    width:100px;
+
+}
+.tag-premium{
+    text-align: center;
+    height:50px;
+    width:50px;
+    font-size:14px;
+    padding-top:13px;
+    margin-left:190px;
+    margin-top:140px;
+    border-radius:50px;
+    position: fixed;
+}
+.center-right .center-left{
+    display: block;
+	background-color: #FFFFFF;
+	background-repeat: no-repeat;
+	background-size: 18px 12px;
+	background-position: center;
+	height: 4.8rem;
+	width: 4.8rem;
+	line-height: 4.8rem;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.author_rating{
+    right: 30px;
+    bottom:20px;
+    position: absolute;
+}
+.back-to-top {
+    text-align: center;
+    color:white;
+    height: 50px;
+    width:50px;
+    padding-top:7px;;
+    font-size:35px;
+    background-color:#f9b700;
+    border-radius:50px;
+    position: fixed;
+    right: 20px;
+    bottom:55px;
+    transition-duration: 1s;
+    transition-delay: 0.4s;
+  }

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog-Incognito
+{% endblock  %}
+{% block csslink %}<link rel="stylesheet" href=" {% static 'styleblog.css' %} ">
+{% endblock csslink %}
+{% block body %}
+<div class='container-full_image' >
+    <section class="cd-slider">
+        <ul class="ulclass">
+		 {% for post1 in threepost %}
+            <li class="liclass" data-color="#FF384B">
+            <div class="content" >
+                <blockquote class="blockquoteclass">
+                <a href='/blog/{{post1.slug}}'><p>{{post1.title}}.</p></a>
+                <span>{{post1.timestamp| date |safe}} - {{post1.author}}</span>
+                </blockquote>
+            </div>
+            </li>
+		  {% endfor %}
+        </ul>
+        <nav class="navclass">
+            <div class='prevcolor'><a class="prev" style="color:white" href="#"></a></div>
+            <div class='nextcolor'><a class="next" style="color:white" href="#"></a></div>
+        </nav>
+    </section>
+</div>
+    <!--================Blog Area =================-->
+    <div class="container container-margin">
+        <div class="site-section" id="blog-section">
+        <div class="row">
+          {% for post in allposts %}
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" >
+            <div class="h-entry">
+			<div class='h-entry-img'>
+              <img src="{{post.thumb.url}}" class='img-size' alt="Image" class="img-fluid"></div>
+              <h2 ><a href="/blog/{{post.slug}}">{{post.title|safe}}</a></h2>
+              <div class="meta mb-4">{{post.author}} <span class="mx-2">•</span> {{post.timestamp |date}}<span class="mx-2">•</span> <a style="color:#008673">{{post.tag}}</a></div>
+              <p>{{post.content | truncatechars:210|safe}}</p>
+              <p><a style="color:#008673" href="/blog/{{post.slug}}" class='hoverbox'>Continue Reading...</a></p>
+            </div> 
+          </div>
+             {% endfor %}
+        </div>
+      </div>
+    </div>
+   
+    <!--================Blog Area =================-->
+	<div class="row" style="margin-left:42%">
+            <div class="col-full">
+                <nav class="pgn">
+                    <ul>
+                        {% if allposts.has_previous %}
+                        <li><a class="pgn__prev" href="/blog/?page={{allposts.previous_page_number}}">Prev</a></li>
+                        {% else %}
+                        <li><a class="pgn__prev" href="#">Prev</a></li>
+                        {% endif %}
+                         {% for num in allposts.paginator.page_range %}
+                        {% if allposts.number == num %}
+                        <li><a class="pgn__num current" href="/blog/?page={{num}}">{{num}}</a></li>
+                        {% elif num > allposts.number|add:'-3' and num < allposts.number|add:'3'%}
+                        <li><a class="pgn__num " href="/blog/?page={{num}}">{{num}}</a></li>
+                        {% endif%}
+
+                    {% endfor%}
+                     {% if allposts.has_next %}
+                        <li><a class="pgn__next" href="/blog/?page={{allposts.next_page_number}}">Next</a></li>
+                        {% else %}
+                        <li><a class="pgn__next" href="#">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+	</div>
+{% endblock  %}

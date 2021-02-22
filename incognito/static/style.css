@@ -1,0 +1,259 @@
+#wrapper {
+
+  display: flex;
+  flex-direction: row;
+  background: url('img/login-bg.jpg') no-repeat center center/ cover;
+}
+.container-full_image{
+  margin-top:auto;
+}
+@media (max-height: 576px) { 
+  .container-full_image{
+    margin-top:101px;
+  }
+}
+@media (max-width: 576px) {
+  .container-full_image{
+    margin-top:101px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .container-full_image{
+    margin-top:101px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .container-full_image{
+    margin-top:101px;
+  }
+}
+#left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 120vh;
+}
+
+#right {
+  flex: 1;
+}
+
+/* Sign In */
+#signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  padding-bottom: 1rem;
+}
+
+#signin form {
+  width: 80%;
+  padding-bottom: 3rem;
+}
+#signin label {
+  font-size: 0.9rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: floralwhite;
+}
+
+#signin .text-input {
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+
+#signin .primary-btn {
+  width: 100%;
+}
+
+#signin .secondary-btn,
+.or,
+.links {
+  width: 60%;
+}
+
+#signin .links a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.links>a :hover{
+  text-transform: none;
+  text-decoration:underline;
+}
+
+#signin .or {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.2rem;
+  align-items: center;
+}
+
+#signin .or .bar {
+  flex: auto;
+  border: none;
+  height: 1px;
+  background: #aaa;
+}
+
+#signin .or span {
+  color: #ccc;
+  padding: 0 0.8rem;
+}
+
+/* Showcase */
+#showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100vh;
+  text-align: center;
+}
+
+#showcase .showcase-text {
+  font-size: 2rem;
+  width: 100%;
+  color: #fff;
+  font-family: metropolis-medium;
+  margin-bottom: 1.5rem;
+}
+.showcase-text {
+  
+  font-size: 2rem;
+  width: 100%;
+  color: #fff;
+  font-family: metropolis-medium;
+  margin-bottom: 1.5rem;
+}
+#showcase .secondary-btn {
+  width: 60%;
+  height:3.1rem;
+  margin: auto;
+}
+
+#signin #id_email{
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+#signin #id_new_password1{
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+#signin #id_new_password2{
+  margin-bottom: 1.3rem;
+  width: 100%;
+  border-radius: 2px;
+  background: #181818;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+}
+ul>li{
+  color:rgba(204, 204, 204, 0.486);
+}
+.errorlist li{
+  color:red;
+  font-size:14px;
+
+}
+/* Button */
+.primary-btn {
+  padding: 0.7rem 1rem;
+  height: 2.7rem;
+  display: block;
+  border: 0;
+  border-radius: 2px;
+  font-weight: 500;
+  background: #f96816;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.primary-btn:hover {
+  background-color: #ff7b39;
+}
+
+.secondary-btn {
+  padding: 0.7rem 1rem;
+  height: 3.1rem;
+  display: block;
+  border: 1px solid #f4f4f4;
+  border-radius: 2px;
+  font-weight: 500;
+  background: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.secondary-btn:hover {
+  border-color: #ff7b39;
+  color: #ff7b39;
+}
+
+/* Media Queries */
+@media (min-width: 1200px) {
+  #left {
+    flex: 4;
+  }
+
+  #right {
+    flex: 6;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  #right {
+    display: none;
+  }
+
+  #left {
+    justify-content: start;
+    margin-top: 4vh;
+  }
+
+  
+  #signin .text-input {
+    margin-bottom: 0.7rem;
+  }
+
+  
+}

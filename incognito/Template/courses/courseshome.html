@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Courses -Incognito
+{% endblock  %}
+{% block csslink %}
+<link rel="stylesheet" href=" {% static 'css/uikit.min.css' %} ">
+
+{% endblock  %}
+
+{% block body %}
+
+    <section class="special_cource padding_top">
+        <div class="container">
+        <div>
+         <div class="section_tittle text-center">
+                        <h2>Popular Courses</h2>
+        </div>
+        <div uk-slider uk-slider="autoplay: true" style='margin-left:25px; margin-right:25px;'>
+
+            <div class="uk-position-relative">
+
+                <div class="uk-slider-container uk-light">
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+                       {% for crs in course %}
+                        <li>
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-media-top">
+                                    <a href='#' class='tag tag-premium'>{{crs.price}}<a>
+                                    <img src="{{crs.thumbnail.url}}"alt="">
+                                </div>
+                                <div class="uk-card-body">
+                                 <a href='#' class='tag'>{{crs.owner}}<a>
+                                    <a href='{{crs.weblink}}'><h3 class="uk-card-title">{{crs.name}} </h3></a>
+                                    
+                                   {% if crs.rating == fi %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == fo %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == thr %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                {% else %}
+                                    <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>0 Ratings</p>
+                                </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </li>{% endfor %}
+                    </ul>
+                </div>
+
+                <div class="uk-hidden@s uk-light">
+                    <a class="center-left uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-left uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+
+                <div class="uk-visible@s">
+                    <a class="center-right uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-right uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+            </div>
+        </div>
+      </div><br/>
+      <div>
+         <div class="section_tittle text-center">
+                        <h2>Free Courses</h2>
+        </div>
+        <div uk-slider uk-slider="autoplay: true" style='margin-left:25px; margin-right:25px;'>
+
+            <div class="uk-position-relative">
+
+                <div class="uk-slider-container uk-light">
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+                       {% for crs in cf %}
+                        <li>
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-media-top">
+                                    <a href='#' class='tag tag-premium'>{{crs.price}}<a>
+                                    <img src="{{crs.thumbnail.url}}"alt="">
+                                </div>
+                                <div class="uk-card-body">
+                                 <a href='#' class='tag'>{{crs.owner}}<a>
+                                    <a href='{{crs.weblink}}'><h3 class="uk-card-title">{{crs.name}} </h3></a>
+                                    {% if crs.rating == fi %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == fo %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == thr %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                {% else %}
+                                    <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>0 Ratings</p>
+                                </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </li>{% endfor %}
+                    </ul>
+                </div>
+
+                <div class="uk-hidden@s uk-light">
+                    <a class="center-left uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-left uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+
+                <div class="uk-visible@s">
+                    <a class="center-right uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-right uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+            </div>
+        </div>
+      </div><br/>
+      <div>
+         <div class="section_tittle text-center">
+                        <h2>Premium Courses</h2>
+        </div>
+        <div uk-slider uk-slider="autoplay: true" style='margin-left:25px; margin-right:25px;'>
+
+            <div class="uk-position-relative">
+
+                <div class="uk-slider-container uk-light">
+                    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+                       {% for crs in cp %}
+                        <li>
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-media-top">
+                                    <a href='#' class='tag tag-premium'>{{crs.price}}<a>
+                                    <img src="{{crs.thumbnail.url}}"alt="">
+                                </div>
+                                <div class="uk-card-body">
+                                 <a href='#' class='tag'>{{crs.owner}}<a>
+                                    <a href='{{crs.weblink}}'><h3 class="uk-card-title">{{crs.name}} </h3></a>
+                                    
+                                   {% if crs.rating == fi %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == fo %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                
+                                {% elif crs.rating == thr %}
+                                   <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/color_star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>{{crs.rating}} Ratings</p>
+                                </div>
+                                {% else %}
+                                    <div class="author_rating">
+                                    <div class="rating">
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                        <a href="#"><img src="{% static 'img/icon/star.svg' %} " alt=""></a>
+                                    </div>
+                                    <p>0 Ratings</p>
+                                </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </li>{% endfor %}
+                    </ul>
+                </div>
+
+                <div class="uk-hidden@s uk-light">
+                    <a class="center-left uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-left uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+
+                <div class="uk-visible@s">
+                    <a class="center-right uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                    <a class="center-right uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+    
+ <script src="{% static 'js/uikit.min.js' %} "></script>
+    <script src="{% static 'js/uikit-icons.min.js' %} "></script>
+{% endblock  %}

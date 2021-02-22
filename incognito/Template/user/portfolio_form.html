@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Portfolio -{{request.user}}
+{% endblock  %}
+{% block csslink %}
+<link rel="stylesheet" href=" {% static 'stylep.css' %} ">
+{% endblock csslink %}
+{% block body %}
+	<div class='container'  style=" padding-top:41px" >
+	
+		<div class="wrapper ">
+  			<div class="profile-card js-profile-card">
+    			<div class="profile-card__img">
+      				<img src="{{portfoliona.avatar.url}}" alt="profile card">
+    			</div>
+    			<div class="profile-card__cnt js-profile-cnt">
+					
+					<div class="profile-card-form__container">
+							{% if lengthp %}
+							{% for portfolioname in portfolioname %}
+							<form id="editportfolioform" >
+							<div class="form-row">
+								<div class="col">
+								<input type="text" id="id_firstname" name="firstname" class="text-inputname" placeholder="{{portfolioname.firstname}}" disabled>
+								</div>
+								<div class="col">
+								<input type="text" id="id_lastname" name="lastname" class="text-inputname" placeholder="{{portfolioname.lastname}}" disabled>
+								</div>
+							</div>
+							<div>
+								<input type="text" class="text-inputname" placeholder="{{userid.email}}" disabled >
+							</div>
+							<div>
+								<input type="url" id="id_resumeurl" name="resumeurl"  class="text-inputname" placeholder="{{portfolioname.resumeurl}}" disabled>
+							</div>
+							
+							</form>
+							{% endfor %}
+							
+							{% else %}
+							<form id="editportfolioform" method="post" action='/user/createportfolio/portfolio/' enctype='multipart/form-data'>
+							{% csrf_token %}
+							<div class="form-row">
+								<div class="col">
+								<input type="text" id="id_firstname" name="firstname" class="text-inputname" placeholder="First name" required>
+								</div>
+								<div class="col">
+								<input type="text" id="id_lastname" name="lastname" class="text-inputname" placeholder="Last name" required>
+								</div>
+							</div>
+							<div>
+								<input type="text" class="text-inputname" placeholder="{{request.user.email}}" disabled>
+							</div>
+							<div>
+								<input type="url" id="id_resumeurl" name="resumeurl"  class="text-inputname" placeholder="Resume Url :Google Drive,dropbox" required>
+							</div>
+							<div class="custom-file">
+    							<input type="file" class="custom-file-input text-inputname" id="id_avatar" name='avatar' required>
+    							<label class="custom-file-label" for="id_avatar">Choose Avatar...</label>
+    							<div class="invalid-feedback">Example invalid custom file feedback</div>
+  							</div>
+							<br/>
+							<button type="submit" class="btn_1">Save</button> 
+							</form>
+							{% endif %}
+					</div>
+					 
+				</div>
+			</div>
+			
+		</div>	
+		<div class=" ">
+			<div class="profile-card2 js-profile-card">
+			  <div class="profile-card__cnt js-profile-cnt">
+				  <div class="profile-card-form__container">
+				  <h4>Skills</h4>
+				  <div style='padding-bottom:15px'>
+				  <h5>Beginner</h5>
+
+				  <div class="form-row">
+						  {% for bkill in bskills %}
+						  <div class="col-sm-6">
+						  <input type="text" class="text-inputname" placeholder="{{bkill.bskill}}" disabled>
+						  </div>{% endfor %}
+						  <form id='beginnerhtmlform'>
+						  {% csrf_token %}
+						  <div class='col'>
+						  <input type="text" class="text-inputname" id='bskill' name='bskill' placeholder="Skills : Python,Java,Javascript">
+						  </div>
+						  </div>	
+						 <button type="submit" class="btn_2" >Save</button> 
+						</form>
+					</div><hr/>
+					<div style='padding-bottom:15px'>
+				  <h5>Intermiddate</h5>
+
+				  <div class="form-row">
+  						{% for ikill in iskills %}
+						  <div class="col-sm-6">
+						  <input type="text" class="text-inputname" placeholder="{{ikill.iskill}}" disabled>
+						  </div>{% endfor %}
+						  <form id='intermiddatehtmlform'>
+						  {% csrf_token %}
+						  <div class='col'>
+						  <input type="text" class="text-inputname" id='iskill' name='iskill' placeholder="Skills : Python,Java,Javascript">
+						  </div>
+						  </div>	
+						 <button type="submit" class="btn_2" >Save</button> 
+						</form>
+					</div><hr/>
+					<div>
+				  <h5>Advance</h5>
+
+				  <div class="form-row">
+				  		  {% for akill in askills %}
+						  <div class="col-sm-6">
+						  <input type="text" class="text-inputname" placeholder="{{akill.askill}}" disabled>
+						  </div>{% endfor %}
+						  <form id='advancehtmlform'>
+						  {% csrf_token %}
+						  <div class='col'>
+						  <input type="text" class="text-inputname" id='askill' name='askill' placeholder="Skills : Python,Java,Javascript">
+						  </div>
+						  </div>	
+						 <button type="submit" class="btn_2" >Save</button> 
+						</form>
+					</div>	  
+					  
+				  </div>  
+			  </div>
+		  </div>  
+	  </div>
+		<div class=" ">
+			<div class="profile-card2 js-profile-card" id="pop-up">
+			  <div class="profile-card__cnt js-profile-cnt">
+
+				  <div class="profile-card-form__container">
+				  <h4>Project details</h4><br/>
+				  {% for pskill in pskills %}
+				  <div>
+				  	<h5>{{pskill.pname}}</h5>
+					<p>{{pskill.pdesp}}</p>
+					<h6 style="padding-top:15px"><a href='{{pskill.purl}}'>{{pskill.purl}}/<a><h6>
+				  </div><hr/>{% endfor %}
+				  	<form id='portfolioproject' action='/user/createportfolio/portfoliop/' enctype='multipart/form-data' method='post'>
+					  {% csrf_token %}
+					  <div>
+						  <input type="text" id='pname' name='pname' class="text-inputname" placeholder="Project Name" required>
+					  </div>
+					  <div>
+						  <input type="url" class="text-inputname" id='purl' name='purl' placeholder="Project Url : github link or Website url" required>
+					  </div>
+					  <div>
+						  <textarea class ="textarea" id='pdesp' name='pdesp' placeholder="Description of project......." ></textarea>
+					  </div>
+					  <div id="drop-area">
+
+							<p>Upload project screenshot by Drag and Drop or Upload Button</p>
+							<input type="file" id="id_pimage" name='pimage' accept="image/*"/>
+							<label class="button1" for="id_pimage">Upload Screenshot</label>
+												
+						</div>	
+						 <button type="submit" class="btn_1">Add Project</button> 
+						</form>
+					  <div>
+					  
+					  </div>
+				  </div>  
+			  </div>
+		  </div> 
+		 
+	    </div>
+	</div>
+<a href="/{{request.user}}" class="back-to-top2 btn_1" target='_blank' style="display: inline-block;">Preview</a>
+{% endblock  %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Anonymous Webproxy - Incognito
+{% endblock  %}
+{% block csslink %}<link rel="stylesheet" href=" {% static 'proxyhome.css' %} ">
+{% endblock csslink %}
+{% block body %}
+<section id="slider-part-3" class="bg_cover" style="margin-top:0px" >
+        <div class="container-full_image">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="slider-cont-3 ">
+                        <h2>BEST <STRONG>FREE</STRONG> WEB PROXY</h2>
+                        <span>You affect the world by what you browse</span>
+                        <div class="slider-search mt-45  text-center">
+                           <form action="/proxy/" method='post'>
+                           {% csrf_token %}
+                                <div class="row no-gutters">
+                                    <div class="col-sm-5">
+                                        <input type="url" name='proxyweburl' id='proxyweburl' placeholder="https://cricdewaane.blogspot.com" required>
+                                    </div>
+                                    <br/>
+                                    <div class="col-sm-3  text-center">
+                                        <button type="submit" class="main-btn">Surf Anonymously</button>
+                                    </div>
+                                 </div><!-- row -->
+                            </form>
+                        </div>
+                    </div> <!-- slider cont3 -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+
+
+
+
+
+
+{% endblock  %}

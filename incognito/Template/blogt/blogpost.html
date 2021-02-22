@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{posts.title}}
+{% endblock  %}
+{% block csslink %}<link rel="stylesheet" href=" {% static 'styleblogpost.css' %} ">
+
+{% endblock csslink %}
+ 
+   
+
+{% block body %}
+<div class="container" style='margin-left:13% '>
+<section class="s-content s-content--narrow s-content--no-padding-bottom">
+
+        <article class="row format-standard">
+          
+            <div class="s-content__header col-full">
+                
+                <h1 class="s-content__header-title">
+                    {{posts.title}}
+                </h1>
+                <ul class="s-content__header-meta">
+                    <li class="date">{{posts.timestamp| timesince}} ago</li>
+                    <li class="cat">By  
+                        <a href="#0">{{posts.author}} </a>
+                        
+                    </li>
+                </ul>
+            </div> <!-- end s-content__header -->
+    
+             <!-- end s-content__media -->
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                    <img src="{{posts.thumb.url}} "  alt="">
+                </div>
+            </div>
+            <div class="col-full s-content__main ">
+            <div class="s-content__main1">
+                {{posts.content| safe}}</div>
+                <p class="s-content__tags">
+                    <span>Post Tags</span>
+
+                    <span class="s-content__tag-list">
+                        <a href="#0">{{posts.tag}}</a>
+                    </span>
+                </p> <!-- end s-content__tags -->
+
+                <div class="s-content__author">
+                    <img src='/media/avatar/20191126_204134.png' alt="">
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="/incognito-admin">{{posts.author}}</a>
+                        </h4>
+                    
+                        <p>Founder of Incognito and [dot]Py Technologies.I'm a passionate web developer and Ethical Hacker. I write about Python, Ethical Hacking and Web Development on a weekly basis.
+                        </p>
+
+                        <ul class="s-content__author-social">
+                           <li><a href="#0">Facebook</a></li>
+                           <li><a href="https://www.twitter.com/satyam_.tiwari">Twitter</a></li>
+                           <li><a href="#0">LinkedIn</a></li>
+                           <li><a href="https://www.instagram.com/satyam_.tiwari">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="s-content__pagenav">
+                    <div class="s-content__nav">
+                        <div class="s-content__prev">
+                            <a href="/blog/{{postp.slug}}" rel="prev">
+                                <span>Previous Post</span>
+                                {% if postp %}
+                                {{postp.title}}
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="s-content__next">
+                            <a href="/blog/{{postn.slug}}" rel="next">
+                                <span>Next Post</span>
+                                {% if postn %}
+                                {{postn.title}}
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div> <hr></hr>
+                </div> <!-- end s-content__pagenav -->
+
+            </div> <!-- end s-content__main -->
+
+        </article>
+
+     
+        <!-- comments
+        ================================================== -->
+        <div class="comments-wrap">
+           
+            <div id="comments" >
+                <div class=" ">
+
+                    <h3 class="h2">{{posts.comments.count}} Comments</h3>
+                  
+                    <!-- commentlist -->
+                    <ol class="commentlist">
+                          {% for comment in posts.comments.all %}
+                        <li class="depth-1 comment">
+
+                            <div class="comment__avatar">
+                                <img class="avatar" src="{% static '/img/icon/author.jpg' %} "alt="" width="50" height="50">
+                            </div>
+
+                            <div class="comment__content">
+
+                                <div class="comment__info">
+                                    <cite>{{comment.name}}</cite>
+
+                                    <div class="comment__meta">
+                                        <time class="comment__time">{{comment.created_on| date}}  <span class="mx-2">•</span> {{comment.created_on|time}}</time>
+                                       <a class="reply" href="#0">Reply</a>  </div>
+                                </div>
+
+                                <div class="comment__text">
+                                <p>{{comment.Message|safe}}.</p>
+                                </div>
+
+                            </div>
+
+                        </li> <!-- end comment level 1 -->
+
+                        {% endfor %}
+                    </ol> <!-- end commentlist -->
+                
+
+                    <!-- respond
+                    ================================================== -->
+                    <div class="respond full-width" >
+
+                        <h3 class="h2">Leave a Reply</h3>
+
+                        <form name="contactForm" id="contactForm" class="full-width" method="post" action="/blog/{{posts.slug}}/comment/">
+                       
+                        {% csrf_token %}
+                            <fieldset>
+
+                                <div class="form-field">
+                                        <input name="name" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
+                                </div>
+
+                                <div class="form-field">
+                                        <input name="email" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
+                                </div>
+
+                                <div class="form-field">
+                                        <input name="website" type="text" id="cWebsite" class="full-width" placeholder="Website" value="">
+                                </div>
+
+                                <div class="message form-field">
+                                    <textarea name="Message" id="cMessage" class="full-width" placeholder="Your Message"></textarea>
+                                </div>
+
+                                <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>
+
+                            </fieldset>
+                        </form> <!-- end form -->
+
+                    </div> <!-- end respond -->
+
+                </div> <!-- end col-full -->
+
+            </div> <!-- end row comments -->
+        </div> <!-- end comments-wrap -->
+
+    </section>
+</div>
+{% endblock  %}
+ 
+ 

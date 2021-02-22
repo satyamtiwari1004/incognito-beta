@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Account -Incognito
+{% endblock  %}
+{% block csslink %}<link rel="stylesheet" href=" {% static 'style.css' %} ">
+{% endblock csslink %}
+{% block body %}
+    <div class="container-full_image" >
+      <div id="wrapper" >
+        <div id="left">
+          <div id="signin">
+            <br/><br/>
+            <form id='registerform' action='/accounts/createaccount/' method='post'>
+            {% csrf_token %}
+              <div>
+                <label>Username</label>
+                <input type='username' class="text-input" id ='username' name='username' placeholder='abc123'required>
+                {% if message %}
+                {% for message in messages %}
+                <small id="HelpBlock" class="form-text text-muted">{{message}} </small>{% endfor %}   {% endif %}        
+              </div>
+              <div>
+                <label>Email</label>
+                <input type="email" class="text-input"  id ='email' name='email' placeholder='abc@incognito.design' required>
+              </div>
+              <div>
+                <label>Password</label>
+                <input type="password" class="text-input"  id ='password' name='password' placeholder='Password' required>
+              </div>
+              <div>
+                <label>Confirm Password</label>
+                <input type="password" class="text-input"  id ='confirmpassword' name='confirmpassword' placeholder='Confirm Password' required>
+              </div>
+              <div class=" form-row form-group custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+                  <label class="custom-control-label" for="customControlValidation1">Agree to terms and condition.</label>
+                  <div class="invalid-feedback">        You must agree before submitting.      </div>
+              </div>
+
+
+
+              <button type="submit" class="btn_1">Create Account</button>
+            </form>
+            
+          </div>
+        </div>
+        <div id="right">
+          <div id="showcase">
+            <div class="showcase-content">
+              <h1 class="showcase-text">
+                Already Have an Account ?<strong>SignIn Here</strong>
+              </h1>
+              <a href="/accounts/signin/" class="secondary-btn">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock body %}
+    
+    
