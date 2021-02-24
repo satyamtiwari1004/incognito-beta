@@ -25,7 +25,7 @@ SECRET_KEY = 'a8s8ghhns5edzbo-$joih)b-f&9gp(+#=%uj**$(034f5xjkfo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["theincognito.herokuapp.com","127.0.0.1"]
+ALLOWED_HOSTS = ["theincognito.herokuapp.com","incognito-beta.herokuapp.com","127.0.0.1"]
 
 
 # Application definition
