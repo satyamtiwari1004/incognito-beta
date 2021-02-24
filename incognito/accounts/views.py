@@ -6,7 +6,7 @@ from django.contrib import messages
 from sqlite3 import IntegrityError
 from django.db.utils import IntegrityError as ie
 from django.core.mail import EmailMessage
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string,get_template
 from .tokens import account_activation_token
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
@@ -33,19 +33,19 @@ def handlesignup(request):
                         myuser=User.objects.create_user(usernam,email,passwordconfirm)
                         myuser.is_active=False
                         myuser.save()
-                        print('User Saved')
                         current_site = get_current_site(request)
-                        mail_subject = 'Verify your Incognito account.'
-                        print('Mail Subject')
-                        message = render_to_string('acc_active_email.html', {              
+                        mail_subject = 'Confirm your Incognito account.'
+                        messagecon ={              
                         'user': myuser,
                         'domain': current_site.domain,
                         'uid':urlsafe_base64_encode(force_bytes(myuser.pk)),
-                        'token':account_activation_token.make_token(myuser),})
+                        'token':account_activation_token.make_token(myuser),}
+                        message=get_template("acc_active_email.html").render(messagecon)
                         to_email = email
-                        sendemail = EmailMessage(mail_subject, message, to=[to_email])           
+                        sender="Team Incognito"
+                        sendemail = EmailMessage(mail_subject, message,sender, to=[to_email])
+                        sendemail.content_subtype="html"
                         sendemail.send()
-                        print('Mail Sent')
                         return JsonResponse({'email':'vemail'},status=200)
                     else:
                     
