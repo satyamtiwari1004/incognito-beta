@@ -34,7 +34,7 @@ Make sure you have the following installed:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/incognito.git
+   git clone https://github.com/satyamtiwari1004/incognito.git
    cd incognito
    
 2. **Create a virtual environment:**
@@ -94,4 +94,4 @@ Contributions are welcome! Please fork the repository and use a feature branch. 
 	
 ## License   
 
-This project is licensed under the MIT License- see the LICENSE file for details.
+This project is licensed under the MIT License- see the [LICENSE](LICENSE) file for details.
